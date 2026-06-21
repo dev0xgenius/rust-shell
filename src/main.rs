@@ -49,7 +49,7 @@ fn main() {
                 }
             } else if *cmd == "echo" && !args.is_empty() {
                 let output = args.join(" ");
-                println!("{output}\n");
+                println!("{output}");
             }
         }
     }
