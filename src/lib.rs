@@ -11,8 +11,14 @@ pub struct Cmd {
 
 impl Cmd {
     pub fn exec(&self, args: &[&str]) {
-        println!("Executing Command... {}", self.cmd);
-        (self.operation)(args[0].parse().unwrap_or(0));
+        if args.is_empty() {
+            (self.operation)(0);
+            return;
+        }
+
+        let code = args[0].parse().unwrap_or(0);
+        println!("Parsed code: {}", code);
+        (self.operation)(code);
 
         // Do the thing that is expected of the command
         // by passing the arguments
