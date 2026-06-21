@@ -7,10 +7,11 @@ use std::io::{self, Write};
 
 fn main() {
     let mut valid_commands: Vec<Cmd> = Vec::new();
+
     valid_commands.push(Cmd {
         cmd: String::from("exit"),
         description: String::from("exit is a shell built-in"),
-        operation: Box::new(|| std::process::exit(0)),
+        operation: Box::new(|arg| std::process::exit(arg)),
     });
 
     loop {
@@ -30,10 +31,10 @@ fn main() {
 
         if !input.is_empty() {
             let cmd = &input[0];
-            let _args = &input[1..];
+            let args = &input[1..];
 
             match valid_commands.iter().find(|&command| command.cmd == *cmd) {
-                Some(cmd) => cmd.exec(),
+                Some(cmd) => cmd.exec(args),
                 None => println!("{}: not found", *cmd),
             }
 
