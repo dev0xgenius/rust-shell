@@ -33,24 +33,24 @@ fn main() {
             let cmd = &input[0];
             let args = &input[1..];
 
-            match valid_commands.iter().find(|&command| command.cmd == *cmd) {
-                Some(cmd) => cmd.exec(args),
-                None => println!("{}: not found", *cmd),
-            }
-
-            // if *cmd == "exit" {
-            //     if args.len() > 1 {
-            //         println!("{cmd}: too many arguments");
-            //     } else if args.is_empty() {
-            //         std::process::exit(0);
-            //     } else {
-            //         let code = args[0].parse().unwrap_or(0);
-            //         std::process::exit(code);
-            //     }
-            // } else if *cmd == "echo" && !args.is_empty() {
-            //     let output = args.join(" ");
-            //     println!("{output}\n");
+            // match valid_commands.iter().find(|&command| command.cmd == *cmd) {
+            //     Some(cmd) => cmd.exec(args),
+            //     None => println!("{}: not found", *cmd),
             // }
+
+            if *cmd == "exit" {
+                if args.len() > 1 {
+                    println!("{cmd}: too many arguments");
+                } else if args.is_empty() {
+                    std::process::exit(0);
+                } else {
+                    let code = args[0].parse().unwrap_or(0);
+                    std::process::exit(code);
+                }
+            } else if *cmd == "echo" && !args.is_empty() {
+                let output = args.join(" ");
+                println!("{output}\n");
+            }
         }
     }
 }
