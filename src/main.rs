@@ -50,6 +50,8 @@ fn main() {
             } else if *cmd == "echo" && !args.is_empty() {
                 let output = args.join(" ");
                 println!("{output}");
+            } else {
+                println!("{cmd}: not found");
             }
         }
     }
