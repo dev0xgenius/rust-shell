@@ -1,18 +1,13 @@
-#[allow(unused_imports)]
-use codecrafters_shell::Cmd;
-// use std::convert::TryInto;
+#![allow(unused_imports)]
+use codecrafters_shell::bin::handle_type_cmd;
+use codecrafters_shell::command::{Cmd, CmdType};
+use codecrafters_shell::{bin, command, load_commands};
+use std::collections::HashMap;
+use std::env;
 use std::io::{self, Write};
 
-// const KEYWORDS: [&str; 1] = ["echo"];
-
 fn main() {
-    let mut valid_commands: Vec<Cmd> = Vec::new();
-
-    valid_commands.push(Cmd {
-        cmd: String::from("exit"),
-        description: String::from("exit is a shell built-in"),
-        operation: Box::new(|arg| std::process::exit(arg)),
-    });
+    let built_in = &mut load_commands();
 
     loop {
         print!("$ ");
@@ -33,26 +28,14 @@ fn main() {
             let cmd = &input[0];
             let args = &input[1..];
 
-            // match valid_commands.iter().find(|&command| command.cmd == *cmd) {
-            //     Some(cmd) => cmd.exec(args),
-            //     None => println!("{}: not found", *cmd),
-            // }
+            let mut commands_iter = built_in.iter();
 
-            if *cmd == "exit" {
-                if args.len() > 1 {
-                    println!("{cmd}: too many arguments");
-                } else if args.is_empty() {
-                    std::process::exit(0);
-                } else {
-                    let code = args[0].parse().unwrap_or(0);
-                    std::process::exit(code);
-                }
-            } else if *cmd == "echo" && !args.is_empty() {
-                let output = args.join(" ");
-                println!("{output}");
-            } else {
-                println!("{cmd}: not found");
+            if *cmd == "type" {
+                handle_type_cmd(args, &mut commands_iter);
+                continue;
             }
+
+            command::run(cmd, args, built_in);
         }
     }
 }
