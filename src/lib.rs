@@ -1,6 +1,5 @@
-use std::collections::HashMap;
-
 use crate::command::CmdType;
+use std::collections::HashMap;
 
 pub mod bin;
 
