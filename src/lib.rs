@@ -41,7 +41,7 @@ pub mod command {
                 }
             }
 
-            None => println!("invalid command: command not found"),
+            None => println!("{cmd}: command not found"),
         }
     }
 }
