@@ -1,35 +1,66 @@
-[![progress-banner](https://backend.codecrafters.io/progress/shell/cd20a452-2450-4ecd-86ff-c7a9467e3a37)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+# <PROJECT_NAME>
 
-This is a starting point for Rust solutions to the
-["Build Your Own Shell" Challenge](https://app.codecrafters.io/courses/shell/overview).
+> 🚧 **Work in Progress**
 
-In this challenge, you'll build your own POSIX compliant shell that's capable of
-interpreting shell commands, running external programs and builtin commands like
-cd, pwd, echo and more. Along the way, you'll learn about shell command parsing,
-REPLs, builtin commands, and more.
+Building a Unix shell in Rust as part of the Codecrafters **"Build Your Own Shell"** challenge.
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
+## About
 
-# Passing the first stage
+This project is my implementation of a Unix shell written in Rust. It began as part of the Codecrafters challenge and serves as an opportunity to deepen my understanding of systems programming, Unix internals, and process management.
 
-The entry point for your `shell` implementation is in `src/main.rs`. Study and
-uncomment the relevant code, then run the command below to execute the tests on
-our servers:
+As I progress through the challenge, I plan to continue refining and extending the shell beyond the required milestones.
 
-```sh
-codecrafters submit
+## Goals
+
+* Build a functional Unix shell from scratch.
+* Gain a deeper understanding of Unix processes and system calls.
+* Explore command parsing and execution.
+* Learn how shells handle pipes, redirection, and environment variables.
+* Write clean, idiomatic Rust.
+
+## Features
+
+The project is under active development. Features will be added incrementally as I progress through the challenge.
+
+* [ ] Command parsing
+* [ ] Built-in commands
+* [ ] External command execution
+* [ ] Environment variables
+* [ ] Pipes
+* [ ] Input/output redirection
+* [ ] Command substitution
+* [ ] Job control
+
+## Running
+
+Clone the repository and run:
+
+```bash
+cargo run
 ```
 
-Time to move on to the next stage!
+## Progress
 
-# Stage 2 & beyond
+Development follows the milestones defined by the Codecrafters challenge. As new stages are completed, the repository and commit history will reflect that progress.
 
-Note: This section is for stages 2 and beyond.
+## Learning Outcomes
 
-1. Ensure you have `cargo (1.95)` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `src/main.rs`. This command compiles your Rust project, so it might be slow
-   the first time you run it. Subsequent runs will be fast.
-1. Run `codecrafters submit` to submit your solution to CodeCrafters. Test
-   output will be streamed to your terminal.
+Through this project I'm gaining hands-on experience with:
+
+* Rust
+* Unix process management
+* File descriptors
+* System programming
+* Command-line interface design
+* Error handling
+* Testing and debugging
+
+## Repository Status
+
+This repository is actively developed as I work through the Codecrafters challenge. Contributions, suggestions, and feedback are welcome.
+
+## Acknowledgements
+
+This project was started as part of the Codecrafters **"Build Your Own Shell"** challenge. Codecrafters provides hands-on programming challenges that focus on building real-world software from first principles.
+
+As the project evolves, it may grow beyond the original challenge into a more feature-complete shell.
