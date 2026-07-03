@@ -1,13 +1,13 @@
 #![allow(unused_imports)]
 use codecrafters_shell::bin::handle_type_cmd;
 use codecrafters_shell::command::{Cmd, CmdType};
-use codecrafters_shell::{bin, command, load_commands};
+use codecrafters_shell::{bin, command};
 use std::collections::HashMap;
 use std::env;
 use std::io::{self, Write};
 
 fn main() {
-    let built_in = &mut load_commands();
+    let built_in = &mut command::load_commands();
 
     loop {
         print!("$ ");

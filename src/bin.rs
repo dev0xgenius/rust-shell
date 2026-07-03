@@ -4,7 +4,10 @@ use std::{
     path::{self, Path},
 };
 
-use crate::command::{Cmd, CmdType};
+use crate::{
+    command::{Cmd, CmdType},
+    util::is_executable,
+};
 
 pub fn exit(cmd: &Cmd, args: &[&str]) {
     if args.len() > 1 {
@@ -39,7 +42,7 @@ pub fn handle_ext(cmd: &str) -> Result<(), VarError> {
     if let Some(exec_path) = path
         .split(":")
         .map(Path::new)
-        .find(|directory| Path::join(directory, cmd).exists())
+        .find(|directory| is_executable(Path::join(directory, cmd)))
     {
         let path_str = format!(
             "{}{}{cmd}",
